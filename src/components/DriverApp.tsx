@@ -221,19 +221,19 @@ export default function DriverApp() {
                       <div style={{ flex: 1, background: "var(--bg2)", borderRadius: 14, padding: 12, textAlign: "center" }}><div style={{ fontWeight: 700, fontSize: 16, color: "var(--ink)" }}>2:00</div><div style={{ fontSize: 10.5, color: "var(--muted)", marginTop: 2 }}>Grace</div></div>
                     </div>
                     <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 11, marginTop: 16 }}>
-                      <button onClick={() => toast("Opening navigation…")} style={{ border: 0, borderRadius: 16, padding: 18, fontFamily: "Poppins", fontWeight: 600, fontSize: 16, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 9, gridColumn: "1/-1", background: "var(--ink)", color: "#fff" }}>
+                      <button onClick={() => toast("Opening navigation…")} className="bb" style={{ border: 0, borderRadius: 16, padding: 18, fontFamily: "Poppins", fontWeight: 600, fontSize: 16, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 9, gridColumn: "1/-1", background: "var(--ink)", color: "#fff" }}>
                         <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 11l18-8-8 18-2-8z" /></svg>
                         Navigate
                       </button>
-                      <button onClick={arrive} style={{ border: 0, borderRadius: 16, padding: 21, fontFamily: "Poppins", fontWeight: 600, fontSize: 18, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 9, gridColumn: "1/-1", background: "linear-gradient(150deg,#E0C572,var(--gold),var(--gold-dim))", color: "var(--black)" }}>
+                      <button onClick={arrive} className="bb" style={{ border: 0, borderRadius: 16, padding: 21, fontFamily: "Poppins", fontWeight: 600, fontSize: 18, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 9, gridColumn: "1/-1", background: "linear-gradient(150deg,#E0C572,var(--gold),var(--gold-dim))", color: "var(--black)" }}>
                         <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M5 12l5 5L20 7" /></svg>
                         I&apos;ve arrived
                       </button>
-                      <button onClick={() => toast("Calling passenger…")} style={{ border: 0, borderRadius: 16, padding: 18, fontFamily: "Poppins", fontWeight: 600, fontSize: 16, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 9, background: "var(--safe-soft)", color: "var(--safe)" }}>
+                      <button onClick={() => toast("Calling passenger…")} className="bb" style={{ border: 0, borderRadius: 16, padding: 18, fontFamily: "Poppins", fontWeight: 600, fontSize: 16, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 9, background: "var(--safe-soft)", color: "var(--safe)" }}>
                         <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 4h4l2 5-3 2a11 11 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" /></svg>
                         Call
                       </button>
-                      <button onClick={() => toast("Opening WhatsApp…")} style={{ border: 0, borderRadius: 16, padding: 18, fontFamily: "Poppins", fontWeight: 600, fontSize: 16, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 9, background: "var(--info-soft)", color: "var(--info)" }}>
+                      <button onClick={() => toast("Opening WhatsApp…")} className="bb" style={{ border: 0, borderRadius: 16, padding: 18, fontFamily: "Poppins", fontWeight: 600, fontSize: 16, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 9, background: "var(--info-soft)", color: "var(--info)" }}>
                         <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 5h16v12H7l-3 3z" /></svg>
                         WhatsApp
                       </button>
@@ -259,11 +259,11 @@ export default function DriverApp() {
                       </div>
                       <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 10, marginTop: 10 }}>
                         {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((k) => (
-                          <button key={k} onClick={() => pinKey(String(k))} style={{ background: "var(--card)", border: "1px solid var(--line)", borderRadius: 14, padding: 16, fontFamily: "Cormorant Garamond, serif", fontWeight: 600, fontSize: 24, color: "var(--ink)", cursor: "pointer" }}>{k}</button>
+                          <button key={k} onClick={() => pinKey(String(k))} className="key">{k}</button>
                         ))}
-                        <button style={{ background: "none", border: "none", cursor: "default" }} />
-                        <button onClick={() => pinKey("0")} style={{ background: "var(--card)", border: "1px solid var(--line)", borderRadius: 14, padding: 16, fontFamily: "Cormorant Garamond, serif", fontWeight: 600, fontSize: 24, color: "var(--ink)", cursor: "pointer" }}>0</button>
-                        <button onClick={pinDel} style={{ background: "var(--card)", border: "1px solid var(--line)", borderRadius: 14, padding: 16, fontFamily: "Poppins", fontWeight: 600, fontSize: 16, color: "var(--muted)", cursor: "pointer" }}>⌫</button>
+                        <button className="key ghost" />
+                        <button onClick={() => pinKey("0")} className="key">0</button>
+                        <button onClick={pinDel} className="key del">⌫</button>
                       </div>
                     </div>
                     {/* Grace bar */}
@@ -278,19 +278,20 @@ export default function DriverApp() {
                       </div>
                     </div>
                     <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 11, marginTop: 14 }}>
-                      <button onClick={markNoShow} style={{ border: 0, borderRadius: 16, padding: 18, fontFamily: "Poppins", fontWeight: 600, fontSize: 16, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 9, background: "var(--late-soft)", color: "var(--late)" }}>
+                      <button onClick={markNoShow} className="bb" style={{ border: 0, borderRadius: 16, padding: 18, fontFamily: "Poppins", fontWeight: 600, fontSize: 16, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 9, background: "var(--late-soft)", color: "var(--late)" }}>
                         <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12" /></svg>
                         No show
                       </button>
                       <button
                         onClick={markPicked}
                         disabled={!pinUnlocked}
+                        className="bb"
                         style={{ border: 0, borderRadius: 16, padding: 18, fontFamily: "Poppins", fontWeight: 600, fontSize: 16, cursor: pinUnlocked ? "pointer" : "default", display: "flex", alignItems: "center", justifyContent: "center", gap: 9, background: "linear-gradient(150deg,#E0C572,var(--gold),var(--gold-dim))", color: "var(--black)", opacity: pinUnlocked ? 1 : 0.45, pointerEvents: pinUnlocked ? "auto" : "none" }}
                       >
                         <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M5 12l5 5L20 7" /></svg>
                         Picked up
                       </button>
-                      <button onClick={() => setPhase("override")} style={{ border: 0, borderRadius: 16, padding: 14, fontFamily: "Poppins", fontWeight: 600, fontSize: 14, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 9, background: "var(--bg2)", color: "var(--ink)", gridColumn: "1/-1" }}>
+                      <button onClick={() => setPhase("override")} className="bb" style={{ border: 0, borderRadius: 16, padding: 14, fontFamily: "Poppins", fontWeight: 600, fontSize: 14, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 9, background: "var(--bg2)", color: "var(--ink)", gridColumn: "1/-1" }}>
                         <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="9" /><path d="M12 8v4l2.5 1.5" /></svg>
                         PIN not working? Override pickup
                       </button>
@@ -303,7 +304,7 @@ export default function DriverApp() {
                   <div style={{ fontSize: 10.5, letterSpacing: ".12em", textTransform: "uppercase", color: "var(--muted)", margin: "12px 4px 10px", fontWeight: 600 }}>Override reason</div>
                   <div style={{ display: "flex", flexDirection: "column", gap: 9 }}>
                     {["Phone off", "Couldn't access PIN", "Network issue", "Known to driver", "Admin approved"].map((r) => (
-                      <button key={r} onClick={() => doOverride(r)} style={{ border: 0, borderRadius: 16, padding: "14px 16px", fontFamily: "Poppins", fontWeight: 600, fontSize: 14, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "flex-start", gap: 9, background: "var(--bg2)", color: "var(--ink)" }}>
+                      <button key={r} onClick={() => doOverride(r)} className="bb" style={{ border: 0, borderRadius: 16, padding: "14px 16px", fontFamily: "Poppins", fontWeight: 600, fontSize: 14, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "flex-start", gap: 9, background: "var(--bg2)", color: "var(--ink)" }}>
                         {r}
                       </button>
                     ))}

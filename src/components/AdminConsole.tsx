@@ -331,7 +331,8 @@ export default function AdminConsole() {
               </div>
               <button
                 onClick={() => toast("Pickup order optimised by shortest route")}
-                style={{ position: "absolute", right: 16, bottom: 16, background: "var(--black)", border: 0, color: "#fff", borderRadius: 11, padding: "9px 14px", fontSize: 12.5, fontWeight: 600, cursor: "pointer", display: "flex", alignItems: "center", gap: 8, boxShadow: "var(--shadow)" }}
+                className="recalc-btn"
+                style={{ fontFamily: "Poppins" }}
               >
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2"><path d="M21 12a9 9 0 1 1-3-6.7M21 4v5h-5" /></svg>
                 Recalculate order
@@ -384,13 +385,7 @@ export default function AdminConsole() {
                     <div
                       key={i}
                       onClick={() => handleMemberClick(i)}
-                      style={{
-                        display: "flex", alignItems: "center", gap: 12, padding: "10px 12px", borderRadius: 11, cursor: "pointer",
-                        border: "1px solid transparent", transition: ".14s",
-                        background: allocated ? "rgba(30,127,82,.04)" : undefined,
-                      }}
-                      onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.background = "var(--bg2)"; (e.currentTarget as HTMLDivElement).style.borderColor = "var(--line-soft)"; }}
-                      onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.background = allocated ? "rgba(30,127,82,.04)" : ""; (e.currentTarget as HTMLDivElement).style.borderColor = "transparent"; }}
+                      className={`mrow${allocated ? " assigned" : ""}`}
                     >
                       <div style={{ width: 32, height: 32, borderRadius: 9, flexShrink: 0, display: "grid", placeItems: "center", fontWeight: 600, fontSize: 12, color: "#fff", background: "var(--ink)" }}>{init}</div>
                       <div>
@@ -406,7 +401,7 @@ export default function AdminConsole() {
                           <button
                             title="Unallocate"
                             onClick={(e) => { e.stopPropagation(); removeFromTrip(i); }}
-                            style={{ opacity: 1, border: 0, background: "var(--bg3)", color: "var(--muted)", width: 22, height: 22, borderRadius: 7, cursor: "pointer", fontSize: 14, lineHeight: 1, display: "grid", placeItems: "center" }}
+                            className="rm"
                           >×</button>
                         )}
                       </div>
@@ -441,12 +436,7 @@ export default function AdminConsole() {
                     <div
                       key={t.id}
                       onClick={() => setActiveTrip(t.id)}
-                      style={{
-                        border: t.id === activeTrip ? "1px solid var(--gold)" : "1px solid var(--line)",
-                        borderRadius: 13, marginBottom: 11, overflow: "hidden", cursor: "pointer", background: "var(--card)",
-                        boxShadow: t.id === activeTrip ? "0 0 0 1px var(--gold),0 16px 32px -22px rgba(201,168,76,.6)" : undefined,
-                        transition: ".16s",
-                      }}
+                      className={`trip-card${t.id === activeTrip ? " active" : ""}`}
                     >
                       <div style={{ display: "flex", alignItems: "center", gap: 12, padding: "13px 14px" }}>
                         <div style={{ width: 36, height: 36, borderRadius: 10, display: "grid", placeItems: "center", fontFamily: "Cormorant Garamond, serif", fontWeight: 600, fontSize: 19, color: "#fff", flexShrink: 0, background: groups[t.group].color }}>{t.group}</div>
@@ -454,7 +444,8 @@ export default function AdminConsole() {
                           <div style={{ fontFamily: "Cormorant Garamond, serif", fontWeight: 600, fontSize: 18, color: "var(--ink)", lineHeight: 1, display: "inline-flex", alignItems: "center", gap: 7 }}>
                             {t.name}
                             <svg
-                              style={{ opacity: .4, width: 13, height: 13 }}
+                              className="edit-icon"
+                              style={{ width: 13, height: 13 }}
                               viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
                               onClick={(e) => { e.stopPropagation(); rename(t.id); }}
                             ><path d="M12 20h9" /><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z" /></svg>
@@ -505,7 +496,7 @@ export default function AdminConsole() {
                 })}
                 <button
                   onClick={addTrip}
-                  style={{ width: "100%", border: "1px dashed var(--gold-bdr)", background: "var(--gold-soft)", color: "var(--gold-dim)", borderRadius: 12, padding: 13, fontFamily: "Poppins", fontWeight: 600, fontSize: 13, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}
+                  className="addtrip-btn"
                 >
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 5v14M5 12h14" /></svg>
                   Add a trip to this shift
@@ -516,15 +507,15 @@ export default function AdminConsole() {
 
           {/* Board footer */}
           <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
-            <button onClick={() => toast("Draft saved")} style={btnStyle()}>
+            <button onClick={() => toast("Draft saved")} className="board-btn" style={btnStyle()}>
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 4h11l3 3v13H5z" /><path d="M8 4v5h6V4M8 20v-6h8v6" /></svg>
               Save draft
             </button>
-            <button onClick={() => toast("Members notified via WhatsApp")} style={btnStyle()}>
+            <button onClick={() => toast("Members notified via WhatsApp")} className="board-btn" style={btnStyle()}>
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 5h16v12H7l-3 3z" /></svg>
               Notify members
             </button>
-            <button onClick={tryPublish} style={btnStyle(true)}>
+            <button onClick={tryPublish} className="board-btn-primary" style={btnStyle(true)}>
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M5 12l4 4L19 6" /></svg>
               Publish trips to drivers
             </button>
@@ -561,7 +552,8 @@ export default function AdminConsole() {
               value={modalInput}
               onChange={(e) => setModalInput(e.target.value)}
               onKeyDown={(e) => { if (e.key === "Enter") { modal.onSave(modalInput); setModal(null); } if (e.key === "Escape") setModal(null); }}
-              style={{ width: "100%", fontFamily: "Poppins", fontSize: 14, padding: "12px 14px", border: "1px solid var(--line)", borderRadius: 11, outline: "none", color: "var(--ink)" }}
+              className="modal-input"
+              style={{ width: "100%", fontFamily: "Poppins", fontSize: 14, padding: "12px 14px", border: "1px solid var(--line)", borderRadius: 11, color: "var(--ink)" }}
             />
             <div style={{ display: "flex", gap: 10, marginTop: 16, justifyContent: "flex-end" }}>
               <button onClick={() => setModal(null)} style={btnStyle()}>Cancel</button>
@@ -640,10 +632,10 @@ function WarnRow({ children, color }: { children: React.ReactNode; color: "late"
 // Rail nav icons
 function RailItem({ icon, label, active, badge }: { icon: React.ReactNode; label: string; active?: boolean; badge?: string }) {
   return (
-    <a style={{ display: "flex", alignItems: "center", gap: 12, padding: "9px 12px", borderRadius: 10, color: active ? "#fff" : "var(--muted)", textDecoration: "none", fontSize: 13.5, fontWeight: 500, cursor: "pointer", background: active ? "var(--black)" : undefined }}>
-      <span style={{ width: 16, height: 16, flexShrink: 0, opacity: active ? 1 : .7, color: active ? "var(--gold)" : undefined, display: "flex" }}>{icon}</span>
+    <a className={`rail-item${active ? " on" : ""}`}>
+      <span style={{ width: 16, height: 16, flexShrink: 0, display: "flex" }}>{icon}</span>
       {label}
-      {badge && <span style={{ marginLeft: "auto", fontSize: 10, fontWeight: 700, background: "var(--late-soft)", color: "var(--late)", padding: "1px 7px", borderRadius: 6 }}>{badge}</span>}
+      {badge && <span className="badge">{badge}</span>}
     </a>
   );
 }

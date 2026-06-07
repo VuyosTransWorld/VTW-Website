@@ -158,11 +158,11 @@ export default function MemberApp() {
                   </div>
                   {/* Actions */}
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 11, marginTop: 18 }}>
-                    <button onClick={() => toast("Calling driver…")} style={{ border: 0, borderRadius: 15, padding: 15, fontFamily: "Poppins", fontWeight: 600, fontSize: 14, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 9, background: "var(--safe-soft)", color: "var(--safe)" }}>
+                    <button onClick={() => toast("Calling driver…")} className="m-act" style={{ border: 0, borderRadius: 15, padding: 15, fontFamily: "Poppins", fontWeight: 600, fontSize: 14, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 9, background: "var(--safe-soft)", color: "var(--safe)" }}>
                       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 4h4l2 5-3 2a11 11 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" /></svg>
                       Call driver
                     </button>
-                    <button onClick={() => toast("Opening WhatsApp…")} style={{ border: 0, borderRadius: 15, padding: 15, fontFamily: "Poppins", fontWeight: 600, fontSize: 14, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 9, background: "var(--info-soft)", color: "var(--info)" }}>
+                    <button onClick={() => toast("Opening WhatsApp…")} className="m-act" style={{ border: 0, borderRadius: 15, padding: 15, fontFamily: "Poppins", fontWeight: 600, fontSize: 14, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 9, background: "var(--info-soft)", color: "var(--info)" }}>
                       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 5h16v12H7l-3 3z" /></svg>
                       Message
                     </button>
